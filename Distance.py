@@ -10,11 +10,5 @@ my_distance_sensor_right = easy_gpg.init_distance_sensor("AD2")
 GPG = gopigo3.GoPiGo3()
 lineFollow = easy_gpg.init_line_follower("AD1")
 
-
-GPG.set_motor_power(GPG.MOTOR_LEFT + GPG.MOTOR_RIGHT, 100)
-time.sleep(1)
-#Turn Left
-GPG.set_motor_power(GPG.MOTOR_LEFT, 50)
-GPG.set_motor_power(GPG.MOTOR_RIGHT, -50)
-time.sleep(2)
-GPG.set_motor_power(GPG.MOTOR_LEFT + GPG.MOTOR_RIGHT, 0)
+print("Left in mm: ",my_distance_sensor_left.read_mm())
+print("Right in mm: ",my_distance_sensor_left.read_mm())
