@@ -10,6 +10,11 @@ my_distance_sensor_right = easy_gpg.init_distance_sensor("AD2")
 GPG = gopigo3.GoPiGo3()
 lineFollow = easy_gpg.init_line_follower("AD1")
 
-print(lineFollow.read())
-print(lineFollow.read("bivariate"))
-print(lineFollow.read("bivariate-str"))
+touchingline = False
+while (not touchingline):
+    for item in lineFollow.read("bivariate"):
+        if (item == 1):
+            touchingline = True
+            GPG.set_motor_power(GPG.MOTOR_LEFT + GPG.MOTOR_RIGHT, 0)
+            break
+    GPG.set_motor_power(GPG.MOTOR_LEFT + GPG.MOTOR_RIGHT, 100)
