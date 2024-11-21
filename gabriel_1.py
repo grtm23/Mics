@@ -10,6 +10,7 @@ my_distance_sensor_right = easy_gpg.init_distance_sensor("AD2")
 GPG = gopigo3.GoPiGo3()
 lineFollow = easy_gpg.init_line_follower("AD1")
 
+GPG.set_motor_power(GPG.MOTOR_LEFT + GPG.MOTOR_RIGHT, 100)
 while True: 
 	if lineFollow[0] > 1:
 		GPG.set_motor_power(GPG.MOTOR_LEFT + GPG.MOTOR_RIGHT, 100)
