@@ -12,17 +12,17 @@ lineFollow = easy_gpg.init_line_follower("AD1")
 
 GPG.set_motor_power(GPG.MOTOR_LEFT + GPG.MOTOR_RIGHT, 100)
 lf = lineFollow.read("bivariate")
-while True: 
-  if all(value == 0 for value in lf :
-    GPG.set_motor_power(GPG.MOTOR_LEFT + GPG.MOTOR_RIGHT, 100)
+while True:
+	if all(value == 0 for value in lf) :
+		GPG.set_motor_power(GPG.MOTOR_LEFT + GPG.MOTOR_RIGHT, 100)
 		time.sleep(1)
-	elif lf[5] == 1: 
+  	elif lf[5] == 1: 
 		GPG.set_motor_power(GPG.MOTOR_LEFT, 50)
 		GPG.set_motor_power(GPG.MOTOR_RIGHT, -50)
 		time.sleep(2)
-	elif lf[5] == 0:
+	elif lf[5] == 1:
 		GPG.set_motor_power(GPG.MOTOR_LEFT, -50)
 		GPG.set_motor_power(GPG.MOTOR_RIGHT, 50)
 		time.sleep(2)
 	else:
-		GPG.set_motor_power(GPG.MOTOR_LEFT + GPG.MOTOR_RIGHT, 0
+		GPG.set_motor_power(GPG.MOTOR_LEFT + GPG.MOTOR_RIGHT, 0)
