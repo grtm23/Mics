@@ -22,7 +22,7 @@ def infront(sensor):
     return False
 
 def whiteside(sensor):
-    left=sensor[4]+sensor[5]+sensor[6]
+    left=sensor[3]+sensor[4]+sensor[5]
     right=sensor[0]+sensor[1]+sensor[2]
 
     if left>right:
