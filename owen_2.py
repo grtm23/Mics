@@ -10,6 +10,14 @@ my_distance_sensor_right = easy_gpg.init_distance_sensor("AD2")
 GPG = gopigo3.GoPiGo3()
 lineFollow = easy_gpg.init_line_follower("AD1")
 
-while lineFollow.read("bivariate-str") == "bbbbbb":
-    GPG.set_motor_power(GPG.MOTER_LEFT + GPG.MOTER_RIGHT, 100)
-GPG.set_motor_power(GPG.MOTER_LEFT + GPG.MOTER_RIGHT, 0)
+while True:
+    if lineFollow.read("bivariate-str") == "wwwwww":
+        GPG.set_motor_power(GPG.MOTOR_LEFT + GPG.MOTOR_RIGHT, 50)
+    elif lineFollow.read("bivariate-str") == "wwwwwb" or lineFollow.read("bivariate-str") == "wwwwbb" or lineFollow.read("bivariate-str") == "wwwbbb":
+        GPG.set_motor_power(GPG.MOTOR_LEFT, -50)
+        GPG.set_motor_power(GPG.MOTOR_RIGHT, 50)
+    elif lineFollow.read("bivariate-str") == "bwwwww" or lineFollow.read("bivariate-str") == "bbwwww" or lineFollow.read("bivariate-str") == "bbbwww":
+        GPG.set_motor_power(GPG.MOTOR_LEFT, 50)
+        GPG.set_motor_power(GPG.MOTOR_RIGHT, -50)
+    else:
+        GPG.set_motor_power(GPG.MOTOR_LEFT + GPG.MOTOR_RIGHT, 0)
