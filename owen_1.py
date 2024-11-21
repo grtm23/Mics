@@ -1,4 +1,5 @@
 import time
+import random
 import gopigo3
 from search import find
 import easygopigo3 as easy
@@ -10,11 +11,13 @@ my_distance_sensor_right = easy_gpg.init_distance_sensor("AD2")
 GPG = gopigo3.GoPiGo3()
 lineFollow = easy_gpg.init_line_follower("AD1")
 
-#print(lineFollow.read())
-#print(lineFollow.read("bivariate"))
-#print(lineFollow.read("bivariate-str"))
-
 while lineFollow.read("bivariate-str") == "bbbbbb":
-    GPG.set_motor_power(GPG.MOTER_LEFT + GPG.MOTER_RIGHT, 100)
-
-GPG.set_motor_power(GPG.MOTER_LEFT + GPG.MOTER_RIGHT, 0)
+    GPG.set_motor_power(GPG.MOTOR_LEFT + GPG.MOTOR_RIGHT, 100)
+GPG.set_motor_power(GPG.MOTOR_LEFT + GPG.MOTOR_RIGHT, -100)
+time.sleep(3)
+GPG.set_motor_power(GPG.MOTOR_LEFT, 50)
+GPG.set_motor_power(GPG.MOTOR_RIGHT, -50)
+time.sleep(random.randint(1, 3))
+while lineFollow.read("bivariate-str") == "bbbbbb":
+    GPG.set_motor_power(GPG.MOTOR_LEFT + GPG.MOTOR_RIGHT, 100)
+GPG.set_motor_power(GPG.MOTOR_LEFT + GPG.MOTOR_RIGHT, 0)
