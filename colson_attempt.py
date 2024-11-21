@@ -13,6 +13,7 @@ lineFollow = easy_gpg.init_line_follower("AD1")
 GPG.set_motor_power(GPG.MOTOR_LEFT + GPG.MOTOR_RIGHT, 100)
 
 while lineFollow.read('bivariate') is not [1,1,1,1,1]:
+  lineFollow.read('bivariate')
   GPG.set_motor_power(GPG.MOTOR_LEFT + GPG.MOTOR_RIGHT, 100)
   
 GPG.set_motor_power(GPG.MOTOR_LEFT + GPG.MOTOR_RIGHT, 0)
